@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,5 +51,11 @@ public class AdditionTests {
         int sum = additionTab.getSum();
 
         Assert.assertTrue(sum == 3);
+    }
+    @After
+    public void tearDown() {
+        if(webDriver != null) {
+            webDriver.quit();
+        }
     }
 }
