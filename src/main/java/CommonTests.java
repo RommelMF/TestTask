@@ -12,7 +12,7 @@ import pages.TestingSite;
 /**
  * Tests
  */
-public class ItSiteTests {
+public class CommonTests {
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;
     private TestingSite webSite;
@@ -64,13 +64,11 @@ public class ItSiteTests {
 
         Assert.assertTrue(webDriver.getCurrentUrl().contains("rulkov.ru/qa/logout"));
     }
-
+    @After
+    public void tearDown() {
+        if(webDriver != null) {
+            webDriver.quit();
+        }
     }
-
-//    @After
-//    public void tearDown() {
-//        if(webDriver != null) {
-//            webDriver.quit();
-//        }
-//    }
+}
 

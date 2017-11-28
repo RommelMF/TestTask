@@ -11,9 +11,9 @@ import pages.LoginTab;
 import pages.TestingSite;
 
 /**
- * Created by rommel on 26.11.17.
+ * Tests for addition tab
  */
-public class AdditionTest {
+public class AdditionTests {
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;
     private TestingSite webSite;
@@ -46,10 +46,9 @@ public class AdditionTest {
         additionTab.clickButtonNext();
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("table")));
         additionTab.clickButtonNext();
+        additionTab.clickButtonNext();
         int sum = additionTab.getSum();
 
         Assert.assertTrue(sum == 3);
-
-
     }
 }

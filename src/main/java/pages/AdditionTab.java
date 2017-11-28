@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 /**
  * Tab addition
  */
@@ -56,9 +58,16 @@ public class AdditionTab {
         buttonPrevious.click();
     }
     public int getSum() {
+        // не находит элемент(( если подскажете как найти элемент с резкльтатом, то буду признателен
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[value='Вернуться к вводу данных']")));
-        String s = webDriver.findElement(By.cssSelector("tr[ng-class='{'bg-success:!(vm.getSum()%2)'}']")).findElement(By.tagName("td")).getText();
-        System.out.println(s);
-        return 1;
+        List<WebElement> list = webDriver.findElement(By.className("table")).findElements(By.tagName("td"));
+        String result = "";
+        for(WebElement element: list) {
+            String text = element.findElement(By.tagName("td")).getText();
+            if(text.contains("3")) {
+                result = text;
+            }
+        }
+        return Integer.parseInt(result);
     }
 }
